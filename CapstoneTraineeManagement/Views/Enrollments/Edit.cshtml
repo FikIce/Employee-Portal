@@ -1,0 +1,44 @@
+﻿@model CapstoneTraineeManagement.Models.EnrollmentViewModel
+
+@{
+    ViewData["Title"] = "Update Enrollment Status";
+}
+
+<h1>Update Enrollment Status</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="EnrollmentId" />
+
+            <div class="alert alert-info">
+                You can only update the status and add remarks for this enrollment.
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="StatusLookUpId" class="control-label"></label>
+                <select asp-for="StatusLookUpId" class="form-control" asp-items="Model.Statuses"></select>
+                <span asp-validation-for="StatusLookUpId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Remarks" class="control-label"></label>
+                <textarea asp-for="Remarks" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="Remarks" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-4">
+                <input type="submit" value="Save Changes" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

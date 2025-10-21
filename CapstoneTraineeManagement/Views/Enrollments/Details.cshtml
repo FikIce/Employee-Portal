@@ -1,0 +1,27 @@
+﻿@model CapstoneTraineeManagement.DTO.Enrollment
+
+@{
+    ViewData["Title"] = "Enrollment Details";
+}
+
+<h1>Enrollment Details</h1>
+<hr />
+
+<dl class="row">
+    <dt class="col-sm-3">Trainee Name</dt>
+    <dd class="col-sm-9">@Model.EnrolledTrainee?.FullName</dd>
+
+    <dt class="col-sm-3">Program Name</dt>
+    <dd class="col-sm-9">@Model.EnrolledProgram?.Name</dd>
+
+    <dt class="col-sm-3">Enrollment Date</dt>
+    <dd class="col-sm-9">@Model.EnrolledDate.ToShortDateString()</dd>
+
+    <dt class="col-sm-3">Current Status</dt>
+    <dd class="col-sm-9"><span class="badge bg-primary fs-6">@Model.StatusLookUp?.ValueCode</span></dd>
+</dl>
+
+<div class="mt-4">
+    <a asp-action="Edit" asp-route-id="@Model.EnrollmentId" class="btn btn-warning">Edit Status</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

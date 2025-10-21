@@ -1,0 +1,131 @@
+﻿@model CapstoneTraineeManagement.Models.TraineeEditViewModel
+
+@{
+    ViewData["Title"] = "Edit Trainee";
+}
+
+<h1>Edit Trainee Information</h1>
+<h4>@Model.FullName</h4>
+<hr />
+
+<form asp-action="Edit" enctype="multipart/form-data">
+    <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+    <input type="hidden" asp-for="TraineeId" />
+    <input type="hidden" asp-for="ProfilePhotoFileName" />
+    <input type="hidden" asp-for="ResumeFileName" />
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group mb-3">
+                <label asp-for="FullName" class="control-label"></label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group mb-3">
+                <label asp-for="IdentityNo" class="control-label"></label>
+                <input asp-for="IdentityNo" class="form-control" />
+                <span asp-validation-for="IdentityNo" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group mb-3">
+                <label asp-for="Dob" class="control-label">Date of Birth</label>
+                <input asp-for="Dob" class="form-control" type="date" />
+                <span asp-validation-for="Dob" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group mb-3">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group mb-3">
+                <label asp-for="ContactNo" class="control-label"></label>
+                <input asp-for="ContactNo" class="form-control" />
+                <span asp-validation-for="ContactNo" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group mb-3">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group mb-3">
+                <label asp-for="StateLookUpId" class="control-label">State</label>
+                <select asp-for="StateLookUpId" class="form-control" asp-items="@ViewBag.States"></select>
+                <span asp-validation-for="StateLookUpId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group mb-3">
+                <label asp-for="CategoryLookUpId" class="control-label">Trainee Category</label>
+                <select asp-for="CategoryLookUpId" class="form-control" asp-items="@ViewBag.Categories"></select>
+                <span asp-validation-for="CategoryLookUpId" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Preference" class="control-label">Program Preference</label>
+        <input asp-for="Preference" class="form-control" />
+        <span asp-validation-for="Preference" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="WorkingExperience" class="control-label"></label>
+        <textarea asp-for="WorkingExperience" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="WorkingExperience" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="AdditonalNote" class="control-label">Remarks</label>
+        <textarea asp-for="AdditonalNote" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="AdditonalNote" class="text-danger"></span>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group mb-3">
+                <label class="control-label">Upload New Profile Photo</label>
+                <input type="file" name="profilePhoto" class="form-control" accept="image/*" />
+                <small class="form-text text-muted">Leave blank to keep the current photo: @Model.ProfilePhotoFileName</small>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group mb-3">
+                <label class="control-label">Upload New Resume</label>
+                <input type="file" name="resumeFile" class="form-control" />
+                <small class="form-text text-muted">Leave blank to keep the current resume: @Model.ResumeFileName</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group mt-4">
+        <input type="submit" value="Save Changes" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

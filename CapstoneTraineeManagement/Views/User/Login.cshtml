@@ -1,0 +1,44 @@
+﻿@model CapstoneTraineeManagement.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Admin Portal";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<div class="login-wrapper">
+    <div class="login-box row">
+        <div class="col-md-6 d-flex align-items-center justify-content-center p-5">
+            <div class="login-form-container">
+                <h2 class="fw-bold mb-2">Admin Login</h2>
+                <p class="text-muted mb-4">Welcome back! Please enter your details.</p>
+
+                <form asp-action="Login">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="Username" class="form-control" autocomplete="username" placeholder="Username" />
+                        <label asp-for="Username"></label>
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="Password" type="password" class="form-control" autocomplete="current-password" placeholder="Password" />
+                        <label asp-for="Password"></label>
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-grid mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg">Log In</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-6 d-none d-md-block p-0 login-image-side">
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

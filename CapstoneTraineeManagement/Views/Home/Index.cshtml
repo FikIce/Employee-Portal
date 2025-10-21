@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Welcome";
+    Layout = "~/Views/Shared/_PublicLayout.cshtml";
+}
+
+<div class="hero-section">
+    <div class="container text-center">
+        <h1 class="display-3 text-white fw-bold">Trainee Management, Simplified.</h1>
+        <p class="lead text-white-50 my-4">
+            The all-in-one platform to seamlessly manage trainees, programs, and enrollments.
+        </p>
+        <a class="btn btn-primary btn-lg px-4" asp-controller="User" asp-action="Login">Get Started</a>
+    </div>
+</div>
+
+<div class="bg-light">
+    <div class="container py-5">
+        <div class="row text-center">
+            <div class="col-lg-4 mb-4">
+                <div class="feature-card">
+                    <div class="feature-icon bg-primary text-white">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="h4 mt-4">Manage Trainees</h3>
+                    <p class="text-muted">Effortlessly add, edit, view, and track detailed trainee profiles.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="feature-card">
+                    <div class="feature-icon bg-primary text-white">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3 class="h4 mt-4">Define Programs</h3>
+                    <p class="text-muted">Design and manage comprehensive training programs offered to trainees.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="feature-card">
+                    <div class="feature-icon bg-primary text-white">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h3 class="h4 mt-4">Track Enrollments</h3>
+                    <p class="text-muted">Monitor trainee enrollments and manage their status throughout the program lifecycle.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

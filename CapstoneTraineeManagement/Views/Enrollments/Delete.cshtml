@@ -1,0 +1,40 @@
+﻿@model CapstoneTraineeManagement.DTO.Enrollment
+
+@{
+    ViewData["Title"] = "Delete Enrollment";
+    // This line gets the boolean value from the controller.
+    bool canDelete = ViewData["CanDelete"] as bool? ?? false;
+}
+
+<h1>Delete Enrollment</h1>
+
+@if (canDelete)
+{
+    <div class="alert alert-warning">
+        <h3>Are you sure you want to delete this enrollment?</h3>
+        <p>This action cannot be undone.</p>
+    </div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Trainee</dt>
+        <dd class="col-sm-9">@Model.EnrolledTrainee.FullName</dd>
+        <dt class="col-sm-3">Program</dt>
+        <dd class="col-sm-9">@Model.EnrolledProgram.Name</dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="EnrollmentId" />
+        <input type="submit" value="Yes, Delete Permanently" class="btn btn-danger" />
+    </form>
+}
+else
+{
+    <div class="alert alert-danger">
+        <h3>Action Not Allowed</h3>
+        <p>This enrollment cannot be deleted because its status is "@Model.StatusLookUp.ValueCode". Only enrollments with a "New" status can be deleted.</p>
+    </div>
+}
+
+<div class="mt-4">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
